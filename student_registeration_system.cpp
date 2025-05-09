@@ -848,6 +848,16 @@ void login(){
     
         } else if (choice == "2"){
             cout << "\n[✔] Program Ended, Thank You!\n\n";
+            cout << "Program Ended, Thank You!\n\n"
+                 << "╔══════════════════════════════════════════╗\n"
+                 << "║ GroupMembers         ║    ID             ║\n"
+                 << "║══════════════════════════════════════════║\n"
+                 << "║ Mohammed Abdi        ║  DDU1600554       ║\n"
+                 << "║ Samuel Solomon       ║  DDU16000644      ║\n"
+                 << "║ Sena Alemayehu       ║  DDU1600663       ║\n"
+                 << "║ Abdulfetah Ibrahim   ║  DDU1600029       ║\n"
+                 << "║ Adnan Mohammed       ║  DDU16001164      ║\n"
+                 << "╚══════════════════════════════════════════╝\n\n";
         } else {
             cout << "\n[✘] There is no option \"" << choice << "\"\n";
         }
