@@ -19,7 +19,38 @@ void insertBefore(){}
 void insertMoreBefore(){}
 
 void insertionMenu(){
-    cout << "\n═══ Insertion Menu ══════════\n";
+    string choice;
+    do{
+        cout << "\n═══ Insertion Menu ══════════\n"
+             << "1. Insert First\n"
+             << "2. Insert Last\n"
+             << "3. Insert After a Student (By ID)\n"
+             << "4. Insert Before a Student (By ID)\n"
+             << "5. Back\n\nchoose[1-5]: ";
+        cin >> choice;
+
+        if(choice == "1"){
+            insertFirst();
+            insertMoreFirst();
+        } else if(choice == "2"){
+            insertLast();
+            insertMoreLast();
+        } else if(choice == "3"){
+            insertAfter();
+            insertAfter();
+            insertMoreAfter();
+        } else if(choice == "4"){
+            insertBefore();
+            insertMoreBefore();
+        } else if(choice == "5"){
+            cout << "------------------\n"
+                 << "Redirecting to homepage ...\n"
+                 << "------------------\n";
+        } else {
+            cout << "There is no option \"" << choice << "\"\n";
+        }
+
+    } while(choice != "5");
 }
 
 void displayAll(){}
@@ -52,31 +83,29 @@ void loadFromFile(){}
 
 void homePage(){
     string choice;
-    cout << "\n═══ Welcome! Admin ══════════";
     do{
-
-    cout << "\n1. Insert Student\n"
-         << "2. Display Student\n"
-         << "3. Delete Student\n"
-         << "4. Update Student\n"
-         << "5. Logout\n\nchoose[1-5]: ";
-    cin >> choice;
-    if(choice == "1"){
-        insertMenu();
-    } else if(choice == "2"){
-        displayMenu();
-    } else if(choice == "3"){
-        deleteMenu();
-    } else if(choice == "4"){
-        updateMenu();
-    } else if(choice == "5"){
-        cout << "------------------\n"
-             << "Logout Successful\n"
-             << "------------------\n";
-    } else {
-        cout << "There is no option \"" << choice << "\"\n";
-    }
-
+       cout << "\n═══ HomePage ══════════"
+            << "\n1. Insert Student\n"
+            << "2. Display Student\n"
+            << "3. Delete Student\n"
+            << "4. Update Student\n"
+            << "5. Logout\n\nchoose[1-5]: ";
+       cin >> choice;
+       if(choice == "1"){
+           insertionMenu();
+       } else if(choice == "2"){
+           displayMenu();
+       } else if(choice == "3"){
+           deletionMenu();
+       } else if(choice == "4"){
+           updatingMenu();
+       } else if(choice == "5"){
+           cout << "------------------\n"
+                << "Logout Successful\n"
+                << "------------------\n";
+       } else {
+           cout << "There is no option \"" << choice << "\"\n";
+       }
     } while(choice != "5");
 }
 
