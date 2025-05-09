@@ -28,4 +28,6 @@ void deleteAll(){}
 
 void deleteMenu(){}
 
+void update(){}
+
 int main(){}
