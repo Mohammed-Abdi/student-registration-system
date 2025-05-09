@@ -67,9 +67,67 @@ void insertMoreFirst(){
     } while(choice != "N" && choice != "n");
 }
 
-void insertLast(){}
+void insertLast(){
+    string firstNameData, lastNameData, idData, departmentData;
+    int ageData;
+    cout << "\n╔════ Inserting Last ══════════════════════╗\n"
+         << "║ ➤  Enter First Name: ";
+    cin  >> firstNameData;
+    cout << "║ ➤  Enter Last Name: ";
+    cin  >> lastNameData;
+    cout << "║ ➤  Enter Age: ";
+    cin  >> ageData;
+    cout << "║ ➤  Enter Student ID: ";
+    cin  >> idData;
+    cout << "║ ➤  Enter Department: ";
+    cin.ignore();
+    getline(cin, departmentData);
+    cout << "╚══════════════════════════════════════════╝\n";
 
-void insertMoreLast(){}
+    struct student *temp;
+    temp = new student;
+    temp -> firstName = firstNameData;
+    temp -> lastName = lastNameData;
+    temp -> age = ageData;
+    temp -> id = idData;
+    temp -> department = departmentData;
+
+    if(start == NULL){
+        start = temp;
+        temp -> pre = NULL;
+        temp -> next = NULL;
+    } else {
+        struct student *pointer;
+        pointer = start;
+
+        while(pointer -> next != NULL){
+            pointer = pointer -> next;
+        }
+
+        pointer -> next = temp;
+        temp -> pre = pointer;
+        temp -> next = NULL;
+        
+    }
+
+    cout << "\n[✔] Student Inserted at Last Successfully!\n\n";
+}
+
+void insertMoreLast(){
+    string choice;
+    do{
+        cout << "➤  Do you want to add more? [Y/N]: ";
+        cin >> choice;
+        if(choice == "Y" || choice == "y"){
+            insertLast();
+        } else if(choice == "N" || choice == "n"){
+            cout << "\n➤  Redirecting to Insert Page...\n\n";
+            break;
+        } else {
+            cout << "\n[✘] There is no option \"" << choice << "\"\n\n";
+        }
+    } while(choice != "N" && choice != "n");
+}
 
 void insertAfter(){}
 
@@ -141,7 +199,7 @@ void displayMenu(){
              << "║ 2. Search By ID      ║\n"
              << "║ 3. Back\n║ ➤  choose[1-5]: ";
         cin >> choice;
-        cout << "╚═══════════════════════╝\n";
+        cout << "╚══════════════════════╝\n";
 
         if(choice == "1"){
             displayAll();
