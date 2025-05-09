@@ -129,13 +129,146 @@ void insertMoreLast(){
     } while(choice != "N" && choice != "n");
 }
 
-void insertAfter(){}
+void insertAfter(){
+    string target;
+    cout << "\n➤  Enter ID: ";
+    cin  >> target;
+    
+    if(start == NULL){
+        cout << "\n[✘] There Is No Student Records!\n\n";
+    } else {
+        bool isFound = false;
+        struct student *current;
+        current = start;
 
-void insertMoreAfter(){}
+        struct student *studentFound;
 
-void insertBefore(){}
+        while(current != NULL){
+            if(current -> id == target){
+                isFound = true;
+                studentFound = current;
+                break;
+            }
 
-void insertMoreBefore(){}
+            current = current -> next;
+        }
+
+        if(isFound){
+            cout << "\n➤  Student with ID \"" << target << "\" Is Found!\n\n";
+
+            string firstNameData, lastNameData, idData, departmentData;
+            int ageData;
+            cout << "\n╔════ Inserting After [" << target << "] ═════════════════\n"
+                 << "║ ➤  Enter First Name: ";
+            cin  >> firstNameData;
+            cout << "║ ➤  Enter Last Name: ";
+            cin  >> lastNameData;
+            cout << "║ ➤  Enter Age: ";
+            cin  >> ageData;
+            cout << "║ ➤  Enter Student ID: ";
+            cin  >> idData;
+            cout << "║ ➤  Enter Department: ";
+            cin.ignore();
+            getline(cin, departmentData);
+            cout << "╚══════════════════════════════════════════\n";
+        
+            struct student *temp, *nextStudent;
+            temp = new student;
+            temp -> firstName = firstNameData;
+            temp -> lastName = lastNameData;
+            temp -> age = ageData;
+            temp -> id = idData;
+            temp -> department = departmentData;
+
+            nextStudent = studentFound -> next;
+            
+            
+            temp -> next = nextStudent;
+            studentFound -> next = temp;
+            temp -> pre = studentFound;
+
+            if(nextStudent != NULL){
+                nextStudent -> pre = temp;
+            } else {
+                temp -> next = NULL;
+            }
+                
+            cout << "\n[✔] Student Inserted after [" << studentFound -> id << "] Successfully!\n\n";
+        } else {
+            cout << "\n➤  Student with ID \"" << target << "\" Was Not Found!\n\n";
+        }
+    }
+}
+
+void insertBefore(){
+    string target;
+    cout << "\n➤  Enter ID: ";
+    cin  >> target;
+    
+    if(start == NULL){
+        cout << "\n[✘] There Is No Student Records!\n\n";
+    } else {
+        bool isFound = false;
+        struct student *current;
+        current = start;
+
+        struct student *studentFound;
+
+        while(current != NULL){
+            if(current -> id == target){
+                isFound = true;
+                studentFound = current;
+                break;
+            }
+
+            current = current -> next;
+        }
+
+        if(isFound){
+            cout << "\n➤  Student with ID \"" << target << "\" Is Found!\n\n";
+
+            string firstNameData, lastNameData, idData, departmentData;
+            int ageData;
+            cout << "\n╔════ Inserting Before [" << target << "] ═════════════════\n"
+                 << "║ ➤  Enter First Name: ";
+            cin  >> firstNameData;
+            cout << "║ ➤  Enter Last Name: ";
+            cin  >> lastNameData;
+            cout << "║ ➤  Enter Age: ";
+            cin  >> ageData;
+            cout << "║ ➤  Enter Student ID: ";
+            cin  >> idData;
+            cout << "║ ➤  Enter Department: ";
+            cin.ignore();
+            getline(cin, departmentData);
+            cout << "╚══════════════════════════════════════════\n";
+        
+            struct student *temp,*previousStudent;
+            temp = new student;
+            temp -> firstName = firstNameData;
+            temp -> lastName = lastNameData;
+            temp -> age = ageData;
+            temp -> id = idData;
+            temp -> department = departmentData;
+
+            temp -> next = studentFound;
+            temp -> pre = studentFound -> pre;
+            previousStudent = studentFound -> pre;
+
+            if(previousStudent != NULL){
+                previousStudent -> next = temp;
+            } else {
+                start = temp;
+            }
+
+            studentFound -> pre = temp;
+                
+            cout << "\n[✔] Student Inserted Before [" << studentFound -> id << "] Successfully!\n\n";
+        } else {
+            cout << "\n➤  Student with ID \"" << target << "\" Was Not Found!\n\n";
+        }
+    }
+}
 
 void insertionMenu(){
     string choice;
@@ -157,10 +290,8 @@ void insertionMenu(){
             insertMoreLast();
         } else if(choice == "3"){
             insertAfter();
-            insertMoreAfter();
         } else if(choice == "4"){
             insertBefore();
-            insertMoreBefore();
         } else if(choice == "5"){
             cout << "\n➤   Redirecting to homepage...\n\n";
         } else {
@@ -363,7 +494,7 @@ void login(){
                 }
     
         } else if (choice == "2"){
-            cout << "\n[✔] Program Ended, Thank You!\n";
+            cout << "\n[✔] Program Ended, Thank You!\n\n";
         } else {
             cout << "\n[✘] There is no option \"" << choice << "\"\n";
         }
