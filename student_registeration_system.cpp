@@ -322,7 +322,7 @@ void displayAll(){
 
 void search(){
     if(start == NULL){
-        cout << "\n[✘] There Is No Student Records to Search From!\n\n";
+        cout << "\n[✘] There Is No Student Records to Search!\n\n";
     } else {
         bool isFound = false;
         string target;
@@ -374,9 +374,51 @@ void displayMenu(){
     } while(choice != "3");
 }
 
-void deleteFirst(){}
+void deleteFirst(){
+    if(start == NULL){
+        cout << "\n[✘] There Is No Student Records to Delete!\n\n";
+    } else {
+        struct student *current, *nextStudent;
 
-void deleteLast(){}
+        current = start;
+
+        if(start -> next == NULL){
+            delete current;
+            start = NULL;
+        } else {
+            nextStudent = start -> next;
+            start = nextStudent;
+            nextStudent -> pre = NULL;
+    
+            delete current;
+        }
+        
+    }
+}
+
+void deleteLast(){
+    if(start == NULL){
+        cout << "\n[✘] There Is No Student Records to Delete!\n\n";
+    } else {
+        struct student *pointer1, *pointer2;
+
+        pointer1 = start;
+
+        if(start -> next == NULL){
+            delete pointer1;
+            start = NULL;
+        } else {
+            while(pointer1 -> next != NULL){
+                pointer2 = pointer1;
+                pointer1 = pointer1 -> next;
+            }
+
+            pointer2 -> next = NULL;
+            delete pointer1;
+        }
+
+    }
+}
 
 void deleteById(){}
 
@@ -390,7 +432,7 @@ void deletionMenu(){
              << "║ 2. Delete Last\n"
              << "║ 3. Delete By ID\n"
              << "║ 4. Delete All\n"
-             << "║ 5. Back\n║ ➤choose[1-5]: ";
+             << "║ 5. Back\n║ ➤  choose[1-5]: ";
         cin >> choice;
         cout << "╚═══════════════════════╝\n";
         if(choice == "1"){
