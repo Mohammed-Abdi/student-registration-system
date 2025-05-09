@@ -320,7 +320,35 @@ void displayAll(){
     }
 }
 
-void search(){}
+void search(){
+    if(start == NULL){
+        cout << "\n[✘] There Is No Student Records to Search From!\n\n";
+    } else {
+        bool isFound = false;
+        string target;
+        cout << "\n➤  Enter ID: ";
+        cin  >> target;
+        struct student *current;
+        current = start;
+
+        while(current != NULL){
+            if(current -> id == target){
+                isFound = true;
+                cout << "\n╔═══════════════════════════════════╗\n"
+                 << "║ ➤  Name : " << current -> firstName << " " << current -> lastName << "\n"
+                 << "║ ➤  Age  : " << current -> age << "\n"
+                 << "║ ➤  ID   : " << current -> id << "\n"
+                 << "║ ➤  Dep  : " << current -> department << "\n"
+                 << "╚══════════════════════════════════╝\n";
+            }
+            current = current -> next;
+        }
+
+        if(!isFound){
+            cout << "\n➤  Student with ID \"" << target << "\" Was Not Found!\n\n";
+        }
+    }
+}
 
 void displayMenu(){
     string choice;
