@@ -52,7 +52,6 @@ void login(){
         if(username == "admin" && password == "admin"){
             loginSuccessful = true;
         } else {
-            loginSuccessful = false;
             attempt--;
 
             string isPlural = "attempt";
