@@ -37,15 +37,14 @@ void insertionMenu(){
             insertMoreLast();
         } else if(choice == "3"){
             insertAfter();
-            insertAfter();
             insertMoreAfter();
         } else if(choice == "4"){
             insertBefore();
             insertMoreBefore();
         } else if(choice == "5"){
-            cout << "------------------\n"
+            cout << "-----------------------\n"
                  << "Redirecting to homepage ...\n"
-                 << "------------------\n";
+                 << "-----------------------\n";
         } else {
             cout << "There is no option \"" << choice << "\"\n";
         }
@@ -58,7 +57,27 @@ void displayAll(){}
 void search(){}
 
 void displayMenu(){
-    cout << "display function is called";
+    string choice;
+    do{
+        cout << "\n═══ Display Menu ══════════\n"
+             << "1. Display All\n"
+             << "2. Search By ID\n"
+             << "3. Back\n\nchoose[1-5]: ";
+        cin >> choice;
+
+        if(choice == "1"){
+            displayAll();
+        } else if(choice == "2"){
+            search();
+        } else if(choice == "3"){
+            cout << "------------------\n"
+                 << "Redirecting to homepage ...\n"
+                 << "------------------\n";
+        } else {
+            cout << "There is no option \"" << choice << "\"\n";
+        }
+
+    } while(choice != "3");
 }
 
 void deleteFirst(){}
@@ -70,11 +89,63 @@ void deleteById(){}
 void deleteAll(){}
 
 void deletionMenu(){
-    cout << "delete function is called";
+    string choice;
+    do{
+        cout << "\n═══ Deletion Menu ══════════\n"
+             << "1. Delete First\n"
+             << "2. Delete Last\n"
+             << "3. Delete By ID\n"
+             << "4. Delete All\n"
+             << "5. Back\n\nchoose[1-5]: ";
+        cin >> choice;
+
+        if(choice == "1"){
+            deleteFirst();
+        } else if(choice == "2"){
+            deleteLast();
+        } else if(choice == "3"){
+            deleteById();
+        } else if(choice == "4"){
+            deleteAll();
+        } else if(choice == "5"){
+            cout << "------------------\n"
+                 << "Redirecting to homepage ...\n"
+                 << "------------------\n";
+        } else {
+            cout << "There is no option \"" << choice << "\"\n";
+        }
+
+    } while(choice != "5");
 }
 
 void updatingMenu(){
-    cout << "update function is called";
+    string choice;
+    do{
+        cout << "\n═══ Updating Menu ══════════\n"
+             << "1. Update Name\n"
+             << "2. Update Age\n"
+             << "3. Update ID\n"
+             << "4. Update Department\n"
+             << "5. Back\n\nchoose[1-5]: ";
+        cin >> choice;
+
+        if(choice == "1"){
+            insertFirst();
+        } else if(choice == "2"){
+            insertLast();
+        } else if(choice == "3"){
+            insertAfter();
+        } else if(choice == "4"){
+            insertBefore();
+        } else if(choice == "5"){
+            cout << "------------------\n"
+                 << "Redirecting to homepage ...\n"
+                 << "------------------\n";
+        } else {
+            cout << "There is no option \"" << choice << "\"\n";
+        }
+
+    } while(choice != "5");
 }
 
 void saveToFile(){}
