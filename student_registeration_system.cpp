@@ -18,4 +18,14 @@ void search(){}
 
 void display(){}
 
+void deleteFirst(){}
+
+void deleteLast(){}
+
+void deleteById(){}
+
+void deleteAll(){}
+
+void delete(){}
+
 int main(){}
