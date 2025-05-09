@@ -12,4 +12,10 @@ void insertBefore(){}
 
 void insert(){}
 
+void displayAll(){}
+
+void search(){}
+
+void display(){}
+
 int main(){}
