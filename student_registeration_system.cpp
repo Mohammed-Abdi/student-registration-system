@@ -4,14 +4,22 @@ using namespace std;
 
 void insertFirst(){}
 
+void insertMoreFirst(){}
+
 void insertLast(){}
+
+void insertMoreLast(){}
 
 void insertAfter(){}
 
+void insertMoreAfter(){}
+
 void insertBefore(){}
 
-void insertMenu(){
-    cout << "inset function is called";
+void insertMoreBefore(){}
+
+void insertionMenu(){
+    cout << "\n═══ Insertion Menu ══════════\n";
 }
 
 void displayAll(){}
@@ -30,11 +38,11 @@ void deleteById(){}
 
 void deleteAll(){}
 
-void deleteMenu(){
+void deletionMenu(){
     cout << "delete function is called";
 }
 
-void updateMenu(){
+void updatingMenu(){
     cout << "update function is called";
 }
 
