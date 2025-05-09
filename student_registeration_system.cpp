@@ -30,4 +30,8 @@ void deleteMenu(){}
 
 void update(){}
 
+void saveToFile(){}
+
+void loadFromFile(){}
+
 int main(){}
