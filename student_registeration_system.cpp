@@ -346,7 +346,7 @@ void search(){
         }
 
         if(!isFound){
-            cout << "\n➤  Student with ID \"" << target << "\" Was Not Found!\n\n";
+            cout << "\n[✘] There Is No Student with ID [" << target << "]!\n\n";
         }
     }
 }
@@ -396,7 +396,7 @@ void deleteFirst(){
             delete current;
         }
         
-        cout << "\n[✔] First Student [" << storeId << "] Record Deleted Successfully!\n\n";
+        cout << "\n[✔] First Student with ID [" << storeId << "] Record Deleted Successfully!\n\n";
     }
 }
 
@@ -423,12 +423,57 @@ void deleteLast(){
             pointer2 -> next = NULL;
             delete pointer1;
         }
-        cout << "\n[✔] Last Student [" << storeId << "] Record Deleted Successfully!\n\n";
+        cout << "\n[✔] Last Student with ID [" << storeId << "] Record Deleted Successfully!\n\n";
 
     }
 }
 
-void deleteById(){}
+void deleteById(){
+    if(start == NULL){
+        cout << "\n[✘] There Is No Student Records to Delete!\n\n";  
+    } else {
+        bool isFound = false;
+        string target;
+        cout << "\n➤  Enter ID: ";
+        cin  >> target;
+
+        struct student *current;
+        current = start;
+
+        while(current != NULL){
+            if(current -> id == target){
+                isFound = true;
+
+                if(start -> next == NULL){
+                    delete current;
+                    start = NULL;
+                    cout << "\n[✔] Student with ID [" << target <<"] Deleted Successfully!\n\n";
+
+                    break;
+                } else if(current -> pre == NULL){
+                    cout << "\n➤  Student with ID [" << target <<"] is The First Student...!\n";
+                    deleteFirst();
+                    break;
+                } else if(current -> next == NULL){
+                    cout << "\n➤  Student with ID [" << target <<"] is The Last Student...!\n";
+                    deleteLast();
+                    break;
+                } else {
+                    current -> pre -> next = current -> next;
+                    current -> next -> pre = current -> pre;
+
+                    delete current;
+                    cout << "\n[✔] Student with ID [" << target <<"] Deleted Successfully!\n\n";
+                    break;
+                }
+            }
+            current = current -> next;
+        }
+        if(!isFound){
+            cout << "\n[✘] There Is No Student with ID [" << target << "]!\n\n";
+        }
+    }
+}
 
 void deleteAll(){
     if(start == NULL){
