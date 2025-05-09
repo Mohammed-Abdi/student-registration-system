@@ -10,13 +10,17 @@ void insertAfter(){}
 
 void insertBefore(){}
 
-void insertMenu(){}
+void insertMenu(){
+    cout << "inset function is called";
+}
 
 void displayAll(){}
 
 void search(){}
 
-void displayMenu(){}
+void displayMenu(){
+    cout << "display function is called";
+}
 
 void deleteFirst(){}
 
@@ -26,16 +30,46 @@ void deleteById(){}
 
 void deleteAll(){}
 
-void deleteMenu(){}
+void deleteMenu(){
+    cout << "delete function is called";
+}
 
-void update(){}
+void updateMenu(){
+    cout << "update function is called";
+}
 
 void saveToFile(){}
 
 void loadFromFile(){}
 
 void homePage(){
-    cout << "home page is called";
+    string choice;
+    cout << "\n═══ Welcome! Admin ══════════";
+    do{
+
+    cout << "\n1. Insert Student\n"
+         << "2. Display Student\n"
+         << "3. Delete Student\n"
+         << "4. Update Student\n"
+         << "5. Logout\n\nchoose[1-5]: ";
+    cin >> choice;
+    if(choice == "1"){
+        insertMenu();
+    } else if(choice == "2"){
+        displayMenu();
+    } else if(choice == "3"){
+        deleteMenu();
+    } else if(choice == "4"){
+        updateMenu();
+    } else if(choice == "5"){
+        cout << "------------------\n"
+             << "Logout Successful\n"
+             << "------------------\n";
+    } else {
+        cout << "There is no option \"" << choice << "\"\n";
+    }
+
+    } while(choice != "5");
 }
 
 void login(){
@@ -70,10 +104,10 @@ void login(){
                     }
         
                     if(attempt != 0){
-                        cout << "═════════════════════════\n"
+                        cout << "------------------------------\n"
                              << "Incorrect username or password\n"
                              << "You have " << attempt <<  " " << isPlural << " left!\n"
-                             << "═════════════════════════\n";
+                             << "------------------------------\n";
                     }
                     
                 }
