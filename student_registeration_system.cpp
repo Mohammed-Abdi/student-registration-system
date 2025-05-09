@@ -37,48 +37,64 @@ void loadFromFile(){}
 void homePage(){}
 
 void login(){
-    string username, password;
-    bool loginSuccessful = false;
-    int attempt = 3;
-
-    cout << "\n══ Login ════════════════\n";
-
-    while(loginSuccessful == false && attempt != 0){
-        cout << "Enter Username: ";
-        cin >> username;
-        cout << "Enter Password: ";
-        cin >> password;
+    string choice;
     
-        if(username == "admin" && password == "admin"){
-            loginSuccessful = true;
-        } else {
-            attempt--;
-
-            string isPlural = "attempt";
-
-            if(attempt > 1){
-                isPlural = "attempts";
-            }
-
-            if(attempt != 0){
-                cout << "═════════════════════════\n"
-                     << "Incorrect username or password\n"
-                     << "You have " << attempt <<  " " << isPlural << " left!\n"
-                     << "═════════════════════════\n";
-            }
+    do{
+        cout << "\n═══ Welcome ══════════\n\n1. Login\n2. Exit\n\nchoose[1-2]: ";
+        cin >> choice;
+        if(choice == "1"){
             
-        }
-        }
+            string username, password;
+            bool loginSuccessful = false;
+            int attempt = 3;
 
-        cout << "═════════════════════════\n";
-
-        if(loginSuccessful == true){
-            cout << "Login Successful!";
-        } else if(loginSuccessful == false){
-            cout << "System Locked! too many attempts!";
-        }
+            cout << "\n══ Login ════════════════\n";
+        
+            while(loginSuccessful == false && attempt != 0){
+                cout << "Enter Username: ";
+                cin >> username;
+                cout << "Enter Password: ";
+                cin >> password;
+            
+                if(username == "admin" && password == "admin"){
+                    loginSuccessful = true;
+                } else {
+                    attempt--;
+        
+                    string isPlural = "attempt";
+        
+                    if(attempt > 1){
+                        isPlural = "attempts";
+                    }
+        
+                    if(attempt != 0){
+                        cout << "═════════════════════════\n"
+                             << "Incorrect username or password\n"
+                             << "You have " << attempt <<  " " << isPlural << " left!\n"
+                             << "═════════════════════════\n";
+                    }
+                    
+                }
+                }
+        
+                cout << "═════════════════════════\n";
+        
+                if(loginSuccessful == true){
+                    cout << "Login Successful!";
+                } else if(loginSuccessful == false){
+                    cout << "System Locked, Too many attemps!\n";
+                    break;
+                }
     
+        } else if (choice == "2"){
+            cout << "Program Ended, Thank You!\n";
+        } else {
+            cout << "There is no option \"" << choice << "\"\n";
+        }
+    } while(choice != "2");
+
 }
+
 
 int main(){
     login();
