@@ -10,13 +10,13 @@ void insertAfter(){}
 
 void insertBefore(){}
 
-void insert(){}
+void insertMenu(){}
 
 void displayAll(){}
 
 void search(){}
 
-void display(){}
+void displayMenu(){}
 
 void deleteFirst(){}
 
@@ -26,6 +26,6 @@ void deleteById(){}
 
 void deleteAll(){}
 
-void delete(){}
+void deleteMenu(){}
 
 int main(){}
