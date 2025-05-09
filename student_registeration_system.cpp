@@ -34,13 +34,15 @@ void saveToFile(){}
 
 void loadFromFile(){}
 
-void homePage(){}
+void homePage(){
+    cout << "home page is called";
+}
 
 void login(){
     string choice;
     
     do{
-        cout << "\n═══ Welcome ══════════\n\n1. Login\n2. Exit\n\nchoose[1-2]: ";
+        cout << "\n═══ Welcome ══════════\n1. Login\n2. Exit\n\nchoose[1-2]: ";
         cin >> choice;
         if(choice == "1"){
             
@@ -80,7 +82,8 @@ void login(){
                 cout << "═════════════════════════\n";
         
                 if(loginSuccessful == true){
-                    cout << "Login Successful!";
+                    cout << "Login Successful!\n";
+                    homePage();
                 } else if(loginSuccessful == false){
                     cout << "System Locked, Too many attemps!\n";
                     break;
