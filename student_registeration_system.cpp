@@ -379,20 +379,24 @@ void deleteFirst(){
         cout << "\n[✘] There Is No Student Records to Delete!\n\n";
     } else {
         struct student *current, *nextStudent;
+        string storeId;
 
         current = start;
 
         if(start -> next == NULL){
+            storeId = current -> id;
             delete current;
             start = NULL;
         } else {
             nextStudent = start -> next;
             start = nextStudent;
             nextStudent -> pre = NULL;
-    
+
+            storeId = current -> id;
             delete current;
         }
         
+        cout << "\n[✔] First Student [" << storeId << "] Record Deleted Successfully!\n\n";
     }
 }
 
@@ -401,10 +405,12 @@ void deleteLast(){
         cout << "\n[✘] There Is No Student Records to Delete!\n\n";
     } else {
         struct student *pointer1, *pointer2;
+        string storeId;
 
         pointer1 = start;
 
         if(start -> next == NULL){
+            storeId = pointer1 -> id;
             delete pointer1;
             start = NULL;
         } else {
@@ -413,16 +419,39 @@ void deleteLast(){
                 pointer1 = pointer1 -> next;
             }
 
+            storeId = pointer1 -> id;
             pointer2 -> next = NULL;
             delete pointer1;
         }
+        cout << "\n[✔] Last Student [" << storeId << "] Record Deleted Successfully!\n\n";
 
     }
 }
 
 void deleteById(){}
 
-void deleteAll(){}
+void deleteAll(){
+    if(start == NULL){
+        cout << "\n[✘] There Is No Student Records to Delete!\n\n";       
+    } else {
+        struct student *current, *nextStudent;
+        current = start;
+
+        if(start -> next == NULL){
+            delete current;
+        } else {
+            while(current != NULL){
+                nextStudent = current -> next;
+                delete current;
+                current = nextStudent;
+            }
+        }
+
+        start = NULL;
+
+        cout << "\n[✔] All Student Records Deleted Successfully!\n\n";
+    }
+}
 
 void deletionMenu(){
     string choice;
