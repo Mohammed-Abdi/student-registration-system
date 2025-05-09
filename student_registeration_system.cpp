@@ -52,6 +52,7 @@ void insertFirst(){
     cout << "\n[✔] Student Inserted at First Successfully!\n\n";
 }
 
+
 void insertMoreFirst(){
     string choice;
     do{
@@ -67,6 +68,7 @@ void insertMoreFirst(){
         }
     } while(choice != "N" && choice != "n");
 }
+
 
 void insertLast(){
     string firstNameData, lastNameData, idData, departmentData;
@@ -114,6 +116,7 @@ void insertLast(){
     cout << "\n[✔] Student Inserted at Last Successfully!\n\n";
 }
 
+
 void insertMoreLast(){
     string choice;
     do{
@@ -129,6 +132,7 @@ void insertMoreLast(){
         }
     } while(choice != "N" && choice != "n");
 }
+
 
 void insertAfter(){
     string target;
@@ -201,6 +205,7 @@ void insertAfter(){
     }
 }
 
+
 void insertBefore(){
     string target;
     cout << "\n➤  Enter ID: ";
@@ -271,6 +276,7 @@ void insertBefore(){
     }
 }
 
+
 void insertionMenu(){
     string choice;
     do{
@@ -302,6 +308,7 @@ void insertionMenu(){
     } while(choice != "5");
 }
 
+
 void displayAll(){
     if(start == NULL){
         cout << "\n[✘] There Is No Student Record To Display!\n\n";
@@ -320,6 +327,7 @@ void displayAll(){
         }
     }
 }
+
 
 void search(){
     if(start == NULL){
@@ -352,6 +360,7 @@ void search(){
     }
 }
 
+
 void displayMenu(){
     string choice;
     do{
@@ -374,6 +383,7 @@ void displayMenu(){
 
     } while(choice != "3");
 }
+
 
 void deleteFirst(){
     if(start == NULL){
@@ -420,6 +430,7 @@ void deleteFirst(){
         
     }
 }
+
 
 void deleteLast(){
     if(start == NULL){
@@ -470,6 +481,7 @@ void deleteLast(){
 
     }
 }
+
 
 void deleteById(){
     if(start == NULL){
@@ -538,6 +550,7 @@ void deleteById(){
     }
 }
 
+
 void deleteAll(){
     if(start == NULL){
         cout << "\n[✘] There Is No Student Records to Delete!\n\n";       
@@ -572,6 +585,7 @@ void deleteAll(){
     }
 }
 
+
 void deletionMenu(){
     string choice;
     do{
@@ -599,6 +613,7 @@ void deletionMenu(){
 
     } while(choice != "5");
 }
+
 
 void updateMenu(){
     string choice;
@@ -672,6 +687,7 @@ void updateMenu(){
     } while(choice != "5");
 }
 
+
 void saveToFile(){
     ofstream outFile("students.txt");
     if(!outFile){
@@ -692,6 +708,7 @@ void saveToFile(){
     outFile.close();
     cout << "\n[✔] Student records saved to file successfully!\n\n";
 }
+
 
 void loadFromFile(){
     ifstream inFile("students.txt");
@@ -747,6 +764,7 @@ void loadFromFile(){
     inFile.close();
 }
 
+
 void homePage(){
     string choice;
     do{
@@ -774,6 +792,7 @@ void homePage(){
        }
     } while(choice != "5");
 }
+
 
 void login(){
     string choice;
