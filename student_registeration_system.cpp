@@ -34,6 +34,8 @@ void saveToFile(){}
 
 void loadFromFile(){}
 
+void homePage(){}
+
 void login(){}
 
 int main(){}
