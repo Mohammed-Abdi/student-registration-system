@@ -599,30 +599,74 @@ void deletionMenu(){
     } while(choice != "5");
 }
 
-void updatingMenu(){
+void updateMenu(){
     string choice;
     do{
-        cout << "\n╔════ Updating ═════════╗\n"
-             << "║ 1. Update Name        ║\n"
-             << "║ 2. Update Age         ║\n"
-             << "║ 3. Update ID          ║\n"
-             << "║ 4. Update Department  ║\n"
-             << "║ 5. Back\n║ ➤  choose[1-5]: ";
-        cin >> choice;
-        cout << "╚═══════════════════════╝\n";
-        if(choice == "1"){
-            insertFirst();
-        } else if(choice == "2"){
-            insertLast();
-        } else if(choice == "3"){
-            insertAfter();
-        } else if(choice == "4"){
-            insertBefore();
-        } else if(choice == "5"){
-            cout << "\n➤   Redirecting to homepage...\n\n";
-        } else {
-            cout << "\n[✘] There is no option \"" << choice << "\"\n";
+        if(start == NULL){
+        cout << "\n[✘] There Is No Student Records to Search!\n\n";
+    } else {
+        bool isFound = false;
+        string target;
+        cout << "\n➤  Enter ID: ";
+        cin  >> target;
+        struct student *current;
+        current = start;
+
+        while(current != NULL){
+            if(current -> id == target){
+                isFound = true;
+                string choiceX, newFirstName, newLastName, newId, newDepartment;
+                int newAge;
+                do{
+                    
+                    cout << "\n╔═══════════════════════════════════╗\n"
+                 << "║ ➤  Name : " << current -> firstName << " " << current -> lastName << "\n"
+                 << "║ ➤  Age  : " << current -> age << "\n"
+                 << "║ ➤  ID   : " << current -> id << "\n"
+                 << "║ ➤  Dep  : " << current -> department << "\n"
+                 << "║══════════════════════════════════║\n"
+                 << "║ 1. Update Name                   ║\n"
+                 << "║ 2. Update Age                    ║\n"
+                 << "║ 3. Update ID                     ║\n"
+                 << "║ 4. Update Department             ║\n"
+                 << "║ 5. Back\n║ ➤  choose[1-5]: ";
+                 cin >> choice;
+                 cout << "╚══════════════════════════════════╝\n";
+                 if(choice == "1"){
+                    cout << "➤  Update First Name: ";
+                    cin >> newFirstName;
+                    current -> firstName = newFirstName;
+                    cout << "➤  Update Last Name: ";
+                    cin >> newLastName;
+                    current -> lastName = newLastName;
+                } else if(choice == "2"){
+                    cout << "➤  Update Age: ";
+                    cin >> newAge;
+                    current -> age = newAge;
+                } else if(choice == "3"){
+                    cout << "➤  Update ID: ";
+                    cin >> newId;
+                    current -> id = newId;
+                 } else if(choice == "4"){
+                    cout << "➤  Update Department: ";
+                    cin.ignore();
+                    getline(cin , newDepartment);
+                    current -> department = newDepartment;
+                 } else if(choice == "5"){
+                     cout << "\n➤   Redirecting to homepage...\n\n";
+                 } else {
+                     cout << "\n[✘] There is no option \"" << choice << "\"\n";
+                 }
+                } while(choice != "5");
+                
+            }
+            current = current -> next;
         }
+
+        if(!isFound){
+            cout << "\n[✘] There Is No Student with ID [" << target << "]!\n\n";
+        }
+    }
 
     } while(choice != "5");
 }
@@ -650,7 +694,7 @@ void homePage(){
        } else if(choice == "3"){
            deletionMenu();
        } else if(choice == "4"){
-           updatingMenu();
+           updateMenu();
        } else if(choice == "5"){
            cout << "\n[✔] Logout Successful\n\n";
        } else {
