@@ -340,6 +340,7 @@ void search(){
                  << "║ ➤  ID   : " << current -> id << "\n"
                  << "║ ➤  Dep  : " << current -> department << "\n"
                  << "╚══════════════════════════════════╝\n";
+                 break;
             }
             current = current -> next;
         }
