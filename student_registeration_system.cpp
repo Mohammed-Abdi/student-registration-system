@@ -384,19 +384,39 @@ void deleteFirst(){
         current = start;
 
         if(start -> next == NULL){
-            storeId = current -> id;
-            delete current;
-            start = NULL;
+            string choice;
+            cout << "➤  Are you sure you want to delete \""<< current -> firstName <<"\"? [Y/N]: ";
+            cin >> choice;
+            if(choice == "Y" || choice == "y"){
+                storeId = current -> id;
+                 delete current;
+                 start = NULL;
+                 cout << "\n[✔] First Student with ID [" << storeId << "] Record Deleted Successfully!\n\n";
+             } else if(choice == "N" || choice == "n"){
+                 cout << "\n➤  Redirecting to Deletion Page...\n\n";
+             } else {
+                 cout << "\n[✘] There is no option \"" << choice << "\"\n\n";
+             }
+            
         } else {
-            nextStudent = start -> next;
-            start = nextStudent;
-            nextStudent -> pre = NULL;
-
-            storeId = current -> id;
-            delete current;
+            string choice;
+            cout << "➤  Are you sure you want to delete \""<< current -> firstName <<"\"? [Y/N]: ";
+            cin >> choice;
+            if(choice == "Y" || choice == "y"){
+                 nextStudent = start -> next;
+                 start = nextStudent;
+                 nextStudent -> pre = NULL;
+                 storeId = current -> id;
+                 delete current;
+                 cout << "\n[✔] First Student with ID [" << storeId << "] Record Deleted Successfully!\n\n";
+             } else if(choice == "N" || choice == "n"){
+                 cout << "\n➤  Redirecting to Deletion Page...\n\n";
+             } else {
+                 cout << "\n[✘] There is no option \"" << choice << "\"\n\n";
+             }
+            
         }
         
-        cout << "\n[✔] First Student with ID [" << storeId << "] Record Deleted Successfully!\n\n";
     }
 }
 
@@ -406,24 +426,46 @@ void deleteLast(){
     } else {
         struct student *pointer1, *pointer2;
         string storeId;
-
         pointer1 = start;
 
         if(start -> next == NULL){
-            storeId = pointer1 -> id;
-            delete pointer1;
-            start = NULL;
+            
+            string choice;
+            cout << "➤  Are you sure you want to delete \""<< pointer1 -> firstName <<"\"? [Y/N]: ";
+            cin >> choice;
+            if(choice == "Y" || choice == "y"){
+                    storeId = pointer1 -> id;
+                    delete pointer1;
+                    start = NULL;
+                    cout << "\n[✔] Last Student with ID [" << storeId << "] Record Deleted Successfully!\n\n";
+                } else if(choice == "N" || choice == "n"){
+                    cout << "\n➤  Redirecting to Deletion Page...\n\n";
+                } else {
+                    cout << "\n[✘] There is no option \"" << choice << "\"\n\n";
+                }
+                
         } else {
             while(pointer1 -> next != NULL){
                 pointer2 = pointer1;
                 pointer1 = pointer1 -> next;
             }
 
-            storeId = pointer1 -> id;
-            pointer2 -> next = NULL;
-            delete pointer1;
+            
+            string choice;
+            cout << "➤  Are you sure you want to delete \""<< pointer1 -> firstName <<"\"? [Y/N]: ";
+            cin >> choice;
+            if(choice == "Y" || choice == "y"){
+                 storeId = pointer1 -> id;
+                 pointer2 -> next = NULL;
+                 delete pointer1;
+                 cout << "\n[✔] Last Student with ID [" << storeId << "] Record Deleted Successfully!\n\n";
+             } else if(choice == "N" || choice == "n"){
+                 cout << "\n➤  Redirecting to Deletion Page...\n\n";
+             } else {
+                 cout << "\n[✘] There is no option \"" << choice << "\"\n\n";
+             }
+            
         }
-        cout << "\n[✔] Last Student with ID [" << storeId << "] Record Deleted Successfully!\n\n";
 
     }
 }
@@ -444,28 +486,48 @@ void deleteById(){
             if(current -> id == target){
                 isFound = true;
 
-                if(start -> next == NULL){
-                    delete current;
-                    start = NULL;
-                    cout << "\n[✔] Student with ID [" << target <<"] Deleted Successfully!\n\n";
+                    if(start -> next == NULL){
+                        string choice;
+                        cout << "➤  Are you sure you want to delete \""<< current -> firstName <<"\"? [Y/N]: ";
+                        cin >> choice;
 
-                    break;
-                } else if(current -> pre == NULL){
-                    cout << "\n➤  Student with ID [" << target <<"] is The First Student...!\n";
-                    deleteFirst();
-                    break;
-                } else if(current -> next == NULL){
-                    cout << "\n➤  Student with ID [" << target <<"] is The Last Student...!\n";
-                    deleteLast();
-                    break;
-                } else {
-                    current -> pre -> next = current -> next;
-                    current -> next -> pre = current -> pre;
+                        if(choice == "Y" || choice == "y"){
+                            delete current;
+                            start = NULL;
+                            cout << "\n[✔] Student with ID [" << target <<"] Deleted Successfully!\n\n";
+                            break;
+                        } else if(choice == "N" || choice == "n"){
+                            cout << "\n➤  Redirecting to Deletion Page...\n\n";
+                        } else {
+                            cout << "\n[✘] There is no option \"" << choice << "\"\n\n";
+                        }
+                    
+                    } else if(current -> pre == NULL){
+                        cout << "\n➤  Student with ID [" << target <<"] is The First Student...!\n";
+                        deleteFirst();
+                        break;
+                    } else if(current -> next == NULL){
+                        cout << "\n➤  Student with ID [" << target <<"] is The Last Student...!\n";
+                        deleteLast();
+                        break;
+                    } else {
+                        string choice;
+                        cout << "➤  Are you sure you want to delete \""<< current -> firstName <<"\"? [Y/N]: ";
+                        cin >> choice;
 
-                    delete current;
-                    cout << "\n[✔] Student with ID [" << target <<"] Deleted Successfully!\n\n";
-                    break;
-                }
+                        if(choice == "Y" || choice == "y"){
+                            current -> pre -> next = current -> next;
+                            current -> next -> pre = current -> pre;
+        
+                            delete current;
+                            cout << "\n[✔] Student with ID [" << target <<"] Deleted Successfully!\n\n";
+                            break;
+                        } else if(choice == "N" || choice == "n"){
+                            cout << "\n➤  Redirecting to Deletion Page...\n\n";
+                        } else {
+                            cout << "\n[✘] There is no option \"" << choice << "\"\n\n";
+                        }
+                    }
             }
             current = current -> next;
         }
@@ -479,22 +541,33 @@ void deleteAll(){
     if(start == NULL){
         cout << "\n[✘] There Is No Student Records to Delete!\n\n";       
     } else {
-        struct student *current, *nextStudent;
-        current = start;
+        
+        string choice;
+        cout << "➤  Are you sure you want to delete All student records? [Y/N]: ";
+        cin >> choice;
 
-        if(start -> next == NULL){
-            delete current;
-        } else {
-            while(current != NULL){
-                nextStudent = current -> next;
+        if(choice == "Y" || choice == "y"){
+            struct student *current, *nextStudent;
+            current = start;
+    
+            if(start -> next == NULL){
                 delete current;
-                current = nextStudent;
+            } else {
+                while(current != NULL){
+                    nextStudent = current -> next;
+                    delete current;
+                    current = nextStudent;
+                }
             }
+    
+            start = NULL;
+    
+            cout << "\n[✔] All Student Records Deleted Successfully!\n\n";
+        } else if(choice == "N" || choice == "n"){
+            cout << "\n➤  Redirecting to Deletion Page...\n\n";
+        } else {
+            cout << "\n[✘] There is no option \"" << choice << "\"\n\n";
         }
-
-        start = NULL;
-
-        cout << "\n[✔] All Student Records Deleted Successfully!\n\n";
     }
 }
 
