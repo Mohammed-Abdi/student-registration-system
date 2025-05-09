@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<fstream>
 using namespace std;
 
 struct student {
@@ -671,9 +672,80 @@ void updateMenu(){
     } while(choice != "5");
 }
 
-void saveToFile(){}
+void saveToFile(){
+    ofstream outFile("students.txt");
+    if(!outFile){
+        cout << "\n[✘] Error opening file for writing!\n\n";
+        return;
+    }
 
-void loadFromFile(){}
+    struct student* current = start;
+    while(current != NULL){
+        outFile << current->firstName << "|"
+                << current->lastName << "|"
+                << current->age << "|"
+                << current->id << "|"
+                << current->department << "\n";
+        current = current->next;
+    }
+    
+    outFile.close();
+    cout << "\n[✔] Student records saved to file successfully!\n\n";
+}
+
+void loadFromFile(){
+    ifstream inFile("students.txt");
+    if(!inFile){
+        return;
+    }
+
+    string line;
+    while(getline(inFile, line)){
+        size_t pos = 0;
+        string token;
+        string delimiter = "|";
+        
+        pos = line.find(delimiter);
+        string firstName = line.substr(0, pos);
+        line.erase(0, pos + delimiter.length());
+        
+        pos = line.find(delimiter);
+        string lastName = line.substr(0, pos);
+        line.erase(0, pos + delimiter.length());
+        
+        pos = line.find(delimiter);
+        int age = stoi(line.substr(0, pos));
+        line.erase(0, pos + delimiter.length());
+        
+        pos = line.find(delimiter);
+        string id = line.substr(0, pos);
+        line.erase(0, pos + delimiter.length());
+        
+        string department = line;
+
+        struct student* temp = new student;
+        temp->firstName = firstName;
+        temp->lastName = lastName;
+        temp->age = age;
+        temp->id = id;
+        temp->department = department;
+        temp->pre = NULL;
+        temp->next = NULL;
+
+        if(start == NULL){
+            start = temp;
+        } else {
+            struct student* current = start;
+            while(current->next != NULL){
+                current = current->next;
+            }
+            current->next = temp;
+            temp->pre = current;
+        }
+    }
+    
+    inFile.close();
+}
 
 void homePage(){
     string choice;
@@ -766,5 +838,7 @@ void login(){
 
 
 int main(){
+    loadFromFile();
     login();
+    saveToFile();
 }
