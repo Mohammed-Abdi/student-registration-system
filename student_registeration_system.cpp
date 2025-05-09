@@ -34,4 +34,6 @@ void saveToFile(){}
 
 void loadFromFile(){}
 
+void login(){}
+
 int main(){}
