@@ -1,5 +1,0 @@
-Sena|Alemayehu|21|DDU1600663|Software Engineering
-Samuel|Solomon|21|DDU1600644|Software Engineering
-Adnan|Mohammed|22|DDU1601164|Software Engineering
-Abdulfetah|Ibrahim|20|DDU1600029|Software Engineering
-Mohammed|Abdi|22|DDU1600554|Software Engineering
